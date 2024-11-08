@@ -1,3 +1,12 @@
+import OpenAI from "openai";
+
+
+const openai = new OpenAI();
+const api_key = '';
+
+
+
+
 function parse(s) {
     // Array für die aufgeteilten Strings
     const ret = [];
@@ -41,4 +50,33 @@ function parse(s) {
         }
     }
     return ret;
+}
+
+function checkButtonClicked(){
+    let input = document.getElementById('').value;
+    let parsedText = parse(input);
+    let chatGptAnswer = callChatGPT(parsedText);
+}
+
+async function callChatGPT(s){
+    const answer = "";
+    const fullResponse = "";
+    for(let i = 0; i < s.length; i++){
+        prompt = "You will be given a code, prompt for prompt. Evaluate its safety! " + s[i]; 
+        fullResponse.concat(await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${api_Key}`
+        },
+        body: JSON.stringify({
+            model: "gpt-4",
+            messages: [{ role: "user", content: prompt }],
+            max_tokens: 100 // Adjust this value to control the response length
+        })
+        }));
+
+        const data = await response.json();
+        answer.concat(data.choices[0].message.content);
+    }   
 }
