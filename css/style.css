@@ -12,3 +12,28 @@ h1{
 
 
 }
+
+body{
+  height: 100%;
+  background-image: url("../img/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.glass{
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border:1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+  padding: 20px; /* Optional padding */
+  width: 20%; /* Approximately 1/6 of the page width = 16,66 */
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+}
